@@ -32,11 +32,11 @@ $("body").on("click", "#register-success > button", function(e) {
 
 $("#register-form").submit(function (e) {
     e.preventDefault();
-    let newUserObj = {
-        "username": $("#new-name").val(),
-        "password": $("#new-password").val(),
-        "name": $("#new-name").val()
-};
+        let newUserObj = {
+            "username": $("#new-name").val(),
+            "password": $("#new-password").val(),
+            "name": $("#new-name").val()
+    };
 
     $.ajax({
         type: "POST",
@@ -56,3 +56,28 @@ $("#register-form").submit(function (e) {
         }
     })
 });
+
+
+$("#login-form").submit(function (e) {
+    e.preventDefault();
+        let loginObj = {
+            "username": "test",
+            "password": "0123456789"
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/api/auth/login",
+        dataType: "json",
+        contentType : 'application/json',
+        data: JSON.stringify(loginObj),
+        success: function(data){
+            console.log("return response: ", data);
+        },
+        error: function(data, textStatus, errorThrown) {
+            console.log("error");
+        }
+    })
+});
+
+

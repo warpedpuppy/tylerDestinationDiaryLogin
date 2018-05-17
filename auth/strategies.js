@@ -9,6 +9,7 @@ const { User } = require('../users/models');
 const { JWT_SECRET } = require('../config');
 
 const localStrategy = new LocalStrategy((username, password, callback) => {
+  console.log('local strategy')
   let user;
   User.findOne({ username: username })
     .then(_user => {
